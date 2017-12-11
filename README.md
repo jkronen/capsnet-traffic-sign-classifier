@@ -1,3 +1,13 @@
+# My Changes
+
+Running with the official GTSRB
+
+Size of the images is 48x48
+
+Preprocessing is removed
+
+
+
 # Capsnet - Traffic sign classifier - Tensorflow
 
 A Tensorflow implementation of CapsNet(Capsules Net) apply on the German traffic sign dataset

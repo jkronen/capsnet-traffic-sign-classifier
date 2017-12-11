@@ -33,7 +33,7 @@ class ModelTrafficSign(ModelBase):
                 *tf_labels: Labels Placeholder
         """
         # Images 32*32*3
-        tf_images = tf.placeholder(tf.float32, [None, 32, 32, 3], name='images')
+        tf_images = tf.placeholder(tf.float32, [None, 48, 48, 3], name='images')
         # Labels: [0, 1, 6, 20, ...]
         tf_labels = tf.placeholder(tf.int64, [None], name='labels')
         return tf_images, tf_labels
@@ -91,13 +91,13 @@ class ModelTrafficSign(ModelBase):
         # Reconstruct image
         fc1 = tf.contrib.layers.fully_connected(capsule_vector, num_outputs=400)
         fc1 = tf.reshape(fc1, shape=(batch_size, 5, 5, 16))
-        upsample1 = tf.image.resize_nearest_neighbor(fc1, (8, 8))
+        upsample1 = tf.image.resize_nearest_neighbor(fc1, (12, 12))
         conv1 = tf.layers.conv2d(upsample1, 4, (3,3), padding='same', activation=tf.nn.relu)
 
-        upsample2 = tf.image.resize_nearest_neighbor(conv1, (16, 16))
+        upsample2 = tf.image.resize_nearest_neighbor(conv1, (24, 24))
         conv2 = tf.layers.conv2d(upsample2, 8, (3,3), padding='same', activation=tf.nn.relu)
 
-        upsample3 = tf.image.resize_nearest_neighbor(conv2, (32, 32))
+        upsample3 = tf.image.resize_nearest_neighbor(conv2, (48, 48))
         conv6 = tf.layers.conv2d(upsample3, 16, (3,3), padding='same', activation=tf.nn.relu)
 
         # 3 channel for RGG
