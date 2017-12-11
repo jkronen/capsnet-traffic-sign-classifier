@@ -314,7 +314,7 @@ class ModelBase(object):
         #self.sess.run(tf.global_variables_initializer())
 
         tensors = self.sess.run(tensors)[0]
-        tensors = json.loads(tensors)
+        tensors = json.loads(tensors.decode("utf-8"))
         for tensor in tensors:
             try:
                 n_tensor = g.get_tensor_by_name(tensors[tensor])
@@ -323,7 +323,7 @@ class ModelBase(object):
             setattr(self, tensor, n_tensor)
 
         hyps = self.sess.run(hyps)[0]
-        hyps = json.loads(hyps)
+        hyps = json.loads(hyps.decode("utf-8"))
         for hyp in hyps:
             n_hyp = g.get_tensor_by_name(hyps[hyp])
             setattr(self.h, hyp, self.sess.run(n_hyp))
