@@ -93,8 +93,8 @@ def train(dataset, ckpt=None, output=None):
     augmented_train_batches = train_datagen_augmented.flow(X_train, y_train, batch_size=BATCH_SIZE)
 
     while True:
-        next_batch = next(
-            augmented_train_batches if random.uniform(0, 1) < augmented_factor else train_batches)
+        #next_batch = next(augmented_train_batches if random.uniform(0, 1) < augmented_factor else train_batches)
+        next_batch = next(train_batches)
         x_batch, y_batch = next_batch
 
         ### Training
