@@ -1,8 +1,8 @@
 {
-    "conv_1_size": 9,
-    "conv_1_nb": 256,
+    "conv_1_size": 5,
+    "conv_1_nb": 16,
     "conv_2_size": 6,
-    "conv_2_nb": 64,
+    "conv_2_nb": 32,
     "conv_2_dropout": 0.7,
     "caps_1_vec_len": 16,
     "caps_1_size": 5,

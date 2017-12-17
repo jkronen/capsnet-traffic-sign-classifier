@@ -88,12 +88,12 @@ def test(dataset, ckpt):
 
     # Get the confusion matrix
     cnf_matrix = confusion_matrix(y_test, predicted_class)
-
+    np.savetxt("cnf.txt", cnf_matrix)
     # Plot the confusion matrix
-    plt.figure()
-    plot_confusion_matrix(cnf_matrix, classes=[str(i) for i in range(43)], title='Confusion matrix, without normalization')
+    #plt.figure()
+    #plot_confusion_matrix(cnf_matrix, classes=[str(i) for i in range(43)], title='Confusion matrix, without normalization')
 
-    plt.show()
+    #plt.show()
 
 if __name__ == '__main__':
     arguments = docopt(__doc__)
