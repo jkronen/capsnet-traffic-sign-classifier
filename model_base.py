@@ -293,7 +293,7 @@ class ModelBase(object):
         #with g.as_default():
         self.sess = tf.Session()
         # Load the graph
-        loader = tf.train.import_meta_graph(ckpt + '.meta')
+        loader = tf.train.import_meta_graph(ckpt + '.meta', clear_devices=True)
         loader.restore(self.sess, ckpt)
 
         g = tf.get_default_graph()
